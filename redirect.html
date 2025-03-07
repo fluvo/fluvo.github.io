@@ -39,8 +39,9 @@
     <script>
       const matches = window.location.href.match(/:\/\/(.*)#(.*)?/i);
       const data = matches?.[2] || '';
-      
-      window.opener.postMessage(data, "*");
+
+      const channel = new BroadcastChannel('facebook-sign-in');
+      channel.postMessage(data);
       
       setTimeout(() => {
         window.close();
