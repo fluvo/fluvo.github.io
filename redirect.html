@@ -8,9 +8,11 @@
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
   <body>  
-    <div>Redirecting...</div>
     <script>
-      window.opener.postMessage("hi", "*");
+      const matches = window.location.href.match(/:\/\/(.*)#(.*)?/i);
+      const data = matches?.[2] || '';
+      
+      window.opener.postMessage(data, "*");
       
       setTimeout(() => {
         window.close();
